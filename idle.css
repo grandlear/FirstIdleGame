@@ -1,73 +1,70 @@
 @charset "UTF-8";
 
-#test {
-  color: gray;
-}
 #score {
-  position:absolute;
-  top:10px;
-  left:300px;
+    position:absolute;
+    top:10px;
+    left:300px;
 }
 
-#coffeeShopValue {
-  position:absolute;
-  top:30px;
-  left:400px;
+#manual-earn {
+    position:absolute;
+    top:10px;
+    left:100px;
 }
 
-#manualEarn {
-  position:absolute;
-  top:10px;
-  left:100px;
+#coffee-shop {
+    position:absolute;
+    top:30px;
+    left:100px;
 }
 
-#coffeeShop {
-  position:absolute;
-  top:30px;
-  left:100px;
+#coffee-shop-value {
+    position:absolute;
+    top:30px;
+    left:400px;
 }
 
-#coffeeShopNextUpgrade {
-  position:absolute;
-  top:30px;
-  left:500px;
+#coffee-shop-next-upgrade {
+    position:absolute;
+    top:30px;
+    left:500px;
 }
 
 
-#cardShop {
-  position:absolute;
-  top:50px;
-  left:100px;
+#card-shop {
+    position:absolute;
+    top:50px;
+    left:100px;
 }
 
-#cardShopValue {
-  position:absolute;
-  top:50px;
-  left:400px;
+#card-shop-value {
+    position:absolute;
+    top:50px;
+    left:400px;
 }
 
-#cardShopNextUpgrade {
-  position:absolute;
-  top:50px;
-  left:500px;
+#card-shop-next-upgrade {
+    position:absolute;
+    top:50px;
+    left:500px;
 }
 
-#bowlingAlley {
-  position:absolute;
-  top:70px;
-  left:100px;
+#bowling-alley {
+    position:absolute;
+    top:70px;
+    left:100px;
 }
 
-#bowlingAlleyValue {
-  position:absolute;
-  top:70px;
-  left:400px;
+#bowling-alley-value {
+    position:absolute;
+    top:70px;
+    left:400px;
 }
 
-#bowlingAlleyNextUpgrade {
-  position:absolute;
-  top:70px;
-  left:500px;
+#bowling-alley-next-upgrade {
+    position:absolute;
+    top:70px;
+    left:500px;
 }
 
 
