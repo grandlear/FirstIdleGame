@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no">
+  <title>idle</title>
+  <link rel="stylesheet" href="idle.css" />
+</head>
+<body>
+  <span id="score"></span>
+  <span id="coffeeShopValue"></span><span id="coffeeShopNextUpgrade"></span>
+  <span id="cardShopValue"></span><span id="cardShopNextUpgrade"></span>
+  <span id="bowlingAlleyValue"></span><span id="bowlingAlleyNextUpgrade"></span>
+  <button id="manualEarn" onmousedown="btnClick()">Click to earn</button>
+  
+  <button id="coffeeShop" onclick="setInterval(coffeeShop,50);">Buy/Upgrade CoffeeShop</button>
+  <button id="cardShop" onclick="setInterval(cardShop,50);">Buy/Upgrade CardShop</button>
+  <button id="bowlingAlley" onclick="setInterval(bowlingAlley,50);">Buy/Upgrade BowlingAlley</button>
+  <script src="idle.js"></script>
+</body>
+</html>
