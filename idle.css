@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+#test {
+  color: gray;
+}
+#score {
+  position:absolute;
+  top:10px;
+  left:300px;
+}
+
+#coffeeShopValue {
+  position:absolute;
+  top:30px;
+  left:400px;
+}
+
+#manualEarn {
+  position:absolute;
+  top:10px;
+  left:100px;
+}
+
+#coffeeShop {
+  position:absolute;
+  top:30px;
+  left:100px;
+}
+
+#coffeeShopNextUpgrade {
+  position:absolute;
+  top:30px;
+  left:500px;
+}
+
+
+#cardShop {
+  position:absolute;
+  top:50px;
+  left:100px;
+}
+
+#cardShopValue {
+  position:absolute;
+  top:50px;
+  left:400px;
+}
+
+#cardShopNextUpgrade {
+  position:absolute;
+  top:50px;
+  left:500px;
+}
+
+#bowlingAlley {
+  position:absolute;
+  top:70px;
+  left:100px;
+}
+
+#bowlingAlleyValue {
+  position:absolute;
+  top:70px;
+  left:400px;
+}
+
+#bowlingAlleyNextUpgrade {
+  position:absolute;
+  top:70px;
+  left:500px;
+}
+
+
+
+
+
+
