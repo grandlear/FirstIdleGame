@@ -1,29 +1,40 @@
 (function () {
     'use strict';
+    var dom = {};
     var score = 0;
     var btnIncrement = 1;
     var btnTotalClicks = 0;
     
-    var coffeeShop = {
-        price : 10,
-        value : 1,
-        multiplier : 2,
-        isBought : false
-    };
     
-    var cardShop = {
-        price : 100,
-        value : 10,
-        multiplier : 4,
-        isBought : false
-    };
-    
-    var bowlingAlley = {
-        price : 1000,
-        value : 250,
-        multiplier : 8,
-        isBought : false
+    function Shop(price, value, multiplier, isBought) {
+        var self = this
+        this.price = price;
+        this.value = value;
+        this.multiplier = multiplier;
+        this.isBought = isBought;
+        
+        this.calculateEarnings = function(){
+            addToScore(self.value);
+        }
+        
+        this.onClicked = function(){
+            if (score >= self.price) {
+                score = score - self.price;
+                var newValue = self.value;
+                newValue = self.multiplier * self.value;
+                self.value = newValue;
+                self.price = (self.price * 2) * self.multiplier;
+                self.isBought = true;
+                setInterval(self.calculateEarnings, 50);
+            }
+        }
     }
+    
+    var coffeeShop = new Shop(10, 1, 2, false);
+    
+    var cardShop = new Shop(100, 10, 4,false);
+    
+    var bowlingAlley = new Shop(1000, 250, 8, false);
     
     function btnClick () {
         btnTotalClicks++;
@@ -41,73 +52,48 @@
     }
     
     function refreshData() {
-        document.getElementById('score').innerHTML = score;
-        document.getElementById('coffee-shop-value').innerHTML = coffeeShop.value;
-        document.getElementById('coffee-shop-next-upgrade').innerHTML = coffeeShop.price;
-        document.getElementById('card-shop-value').innerHTML = cardShop.value;
-        document.getElementById('card-shop-next-upgrade').innerHTML = cardShop.price;
-        document.getElementById('bowling-alley-value').innerHTML = bowlingAlley.value;
-        document.getElementById('bowling-alley-next-upgrade').innerHTML = bowlingAlley.price;
+        dom.score.innerHTML = score;
+        dom.coffeeShopValue.innerHTML = coffeeShop.value;
+        dom.coffeeShopNextUpgrade.innerHTML = coffeeShop.price;
+        dom.cardShopValue.innerHTML = cardShop.value;
+        dom.cardShopNextUpgrade.innerHTML = cardShop.price;
+        dom.bowlingAlleyValue.innerHTML = bowlingAlley.value;
+        dom.bowlingAlleyNextUpgrade.innerHTML = bowlingAlley.price;
     }
     
     function increaseEarnings (val) {
         addToScore(val);
     }
     
-    function calculateCoffeeShopEarnings () {
-        addToScore(coffeeShop.value);
-    }
-    
-    function onCoffeeShopClicked() {
-        if (score >= coffeeShop.price) {
-            score = score - coffeeShop.price;
-            var newValue = coffeeShop.value;
-            newValue = coffeeShop.multiplier * coffeeShop.value;
-            coffeeShop.value = newValue;
-            coffeeShop.price = (coffeeShop.price * 2) * coffeeShop.multiplier;
-            coffeeShop.isBought = true;
-            setInterval(calculateCoffeeShopEarnings, 50);
-        }
+    function cacheDom(){
+        dom.score = document.getElementById('score');
+        dom.coffeeShopValue = document.getElementById('coffee-shop-value');
+        dom.coffeeShopNextUpgrade = document.getElementById('coffee-shop-next-upgrade');
+        dom.cardShopValue = document.getElementById('card-shop-value');
+        dom.cardShopNextUpgrade = document.getElementById('card-shop-next-upgrade');
+        dom.bowlingAlleyValue = document.getElementById('bowling-alley-value');
+        dom.bowlingAlleyNextUpgrade = document.getElementById('bowling-alley-next-upgrade');
         
+        dom.manualEarn = document.getElementById('manual-earn');
+        dom.coffeeShop = document.getElementById('coffee-shop');
+        dom.cardShop = document.getElementById('card-shop');
+        dom.bowlingAlley = document.getElementById('bowling-alley');
     }
     
-    function calculateCardShopEarnings () {
-        addToScore(cardShop.value);
+    function attachEventHandlers(){
+        dom.manualEarn.onclick = onManualEarnClicked;
+        dom.coffeeShop.onclick = coffeeShop.onClicked;
+        dom.cardShop.onclick = cardShop.onClicked;
+        dom.bowlingAlley.onclick = bowlingAlley.onClicked;
     }
     
-    function onCardShopClicked() {
-        if (score >= cardShop.price) {
-            score = score - cardShop.price;
-            var newValue = cardShop.value;
-            newValue = cardShop.multiplier * cardShop.value;
-            cardShop.value = newValue;
-            cardShop.price = (cardShop.price * 2) * cardShop.multiplier;
-            cardShop.isBought = true;
-            setInterval(calculateCardShopEarnings, 50);
-        }
+    function setup(){
+        cacheDom();
+        attachEventHandlers();
+        refreshData();
     }
     
+    setup();
     
-    function calculateBowlingAlleyEarnings () {
-        addToScore(bowlingAlley.value);
-    }
     
-    function onBowlingAlleyClicked() {
-        if (score >= bowlingAlley.price) {
-            score = score - bowlingAlley.price;
-            var newValue = bowlingAlley.value;
-            newValue = bowlingAlley.multiplier * bowlingAlley.value;
-            bowlingAlley.value = newValue;
-            bowlingAlley.price = (bowlingAlley.price * 2) * bowlingAlley.multiplier;
-            bowlingAlley.isBought = true;
-            setInterval(calculateBowlingAlleyEarnings, 50);
-        }
-    }
-    
-    refreshData();
-    
-    document.getElementById('manual-earn').onclick = onManualEarnClicked;
-    document.getElementById('coffee-shop').onclick = onCoffeeShopClicked;
-    document.getElementById('card-shop').onclick = onCardShopClicked;
-    document.getElementById('bowling-alley').onclick = onBowlingAlleyClicked;
 })();
